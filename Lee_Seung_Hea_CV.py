@@ -21,26 +21,35 @@ st.markdown(f"""
             font-size: 32px;
             font-weight: bold;
             color: {heading_color};
+            text-align: center;
         }}
         .sub-heading {{
             font-size: 24px;
             font-weight: bold;
             color: {subheading_color};
+            text-align: center;
         }}
         .content {{
             color: {text_color};
             font-size: 18px;
+            text-align: center;
         }}
         .highlight {{
             color: {highlight_color};
+        }}
+        .right-align {{
+            text-align: right;
         }}
     </style>
 """, unsafe_allow_html=True)
 
 # Name and Contact Information
-st.markdown("<p class='main-heading'>Lee, Seung Hea</p>", unsafe_allow_html=True)
-st.markdown("<p class='sub-heading'>Major(s), Republic of Korea Air Force</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'>22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea<br>Phone: +82-10-9258-5409<br>Email: seunghea.lee.rokaf@gmail.com</p>", unsafe_allow_html=True)
+st.markdown("<div class='main-heading'>Lee, Seung Hea</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-heading'>Major(s), Republic of Korea Air Force</div>", unsafe_allow_html=True)
+st.markdown("<div class='content'>Address: 22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea<br>Phone: +82-10-9258-5409<br>Email: seunghea.lee.rokaf@gmail.com</div>", unsafe_allow_html=True)
+
+# Divider
+st.markdown("<hr>", unsafe_allow_html=True)
 
 # Section 1: Research Interests
 st.markdown("<p class='sub-heading'>RESEARCH INTERESTS</p>", unsafe_allow_html=True)
@@ -96,6 +105,10 @@ st.table({
     "Date": ["08/2019", "05/2019", "11/2018", "10/2018"]
 })
 
+# Right align the date column by using HTML
+for i in range(len(st.session_state.table['Date'])):
+    st.session_state.table['Date'][i] = f"<div class='right-align'>{st.session_state.table['Date'][i]}</div>"
+
 # Section 6: Research Experience
 st.markdown("<p class='sub-heading'>RESEARCH EXPERIENCE</p>", unsafe_allow_html=True)
 st.markdown("<p class='content'><b>Korea Air Force Academy</b>, Cheongju, Korea (09/2014-02/2015)<br>Undergraduate student (Professors: Dr. Changboo Kang, Dr. Jung-sik Um)<br>*Graduation Thesis*: 'The Role of Propaganda in World War I'</p>", unsafe_allow_html=True)
@@ -122,14 +135,4 @@ Service Achievement Citation (Aerospace Exhibition), Wing Commander Citation, RO
 
 # Section 10: Languages and Computer Skills
 st.markdown("<p class='sub-heading'>LANGUAGES & COMPUTER SKILLS</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English (Fluent), Spanish (Basic), Chinese (Basic)<br><b>Computer Skills</b><br>Programming Languages: Python, R, HTML</p>", unsafe_allow_html=True)
-
-# Add download button for CV
-def create_pdf():
-    buffer = BytesIO()
-    buffer.write(b"Generated PDF content goes here")  # Replace with PDF generation code
-    buffer.seek(0)
-    return buffer
-
-pdf_file = create_pdf()
-st.download_button("Download CV as PDF", data=pdf_file, file_name="Lee_Seung_Hea_CV.pdf", mime="application/pdf")
+st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English

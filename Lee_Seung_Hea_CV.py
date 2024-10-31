@@ -37,16 +37,19 @@ st.markdown(f"""
         .highlight {{
             color: {highlight_color};
         }}
-        .right-align {{
-            text-align: right;
+        hr {{
+            border: 0;
+            height: 1px;
+            background-color: {highlight_color};
+            margin: 20px 0;
         }}
     </style>
 """, unsafe_allow_html=True)
 
 # Name and Contact Information
-st.markdown("<div class='main-heading'>Lee, Seung Hea</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-heading'>Major(s), Republic of Korea Air Force</div>", unsafe_allow_html=True)
-st.markdown("<div class='content'>Address: 22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea<br>Phone: +82-10-9258-5409<br>Email: seunghea.lee.rokaf@gmail.com</div>", unsafe_allow_html=True)
+st.markdown("<p class='main-heading'>Lee, Seung Hea</p>", unsafe_allow_html=True)
+st.markdown("<p class='sub-heading'>Major(s), Republic of Korea Air Force</p>", unsafe_allow_html=True)
+st.markdown("<p class='content'>Address: 22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea<br>Phone: +82-10-9258-5409<br>Email: seunghea.lee.rokaf@gmail.com</p>", unsafe_allow_html=True)
 
 # Divider
 st.markdown("<hr>", unsafe_allow_html=True)
@@ -69,7 +72,7 @@ st.markdown("<p class='content'><b>Korea Air Force Academy</b>, Cheongju, Korea 
 
 # Section 3: Scholarship
 st.markdown("<p class='sub-heading'>SCHOLARSHIP</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'>FULL SCHOLARSHIP for Ph.D., Republic of Korea Air Force<br>GRANTED(09/2025-)</p>", unsafe_allow_html=True)
+st.markdown("<p class='content'>FULL SCHOLARSHIP for Ph.D., Republic of Korea Air Force<br>GRANTED (09/2025-)</p>", unsafe_allow_html=True)
 
 # Section 4: Military Experience
 st.markdown("<p class='sub-heading'>MILITARY EXPERIENCE</p>", unsafe_allow_html=True)
@@ -94,7 +97,8 @@ Aircrafts Flown: C-130H, T-103, KT-1</p>
 
 # Section 5: Major Deployments (Table)
 st.markdown("<p class='sub-heading'>Major Deployments</p>", unsafe_allow_html=True)
-st.table({
+# Adjusted for no serial number and right-aligned dates
+deployments_data = {
     "Deployments": [
         "Current Flight Operations Officer, U.S.-ROK Command Post Exercise",
         "Airlift Package Lead, RF-Alaska (International Joint Exercise)",
@@ -103,11 +107,14 @@ st.table({
     ],
     "Location": ["Okinawa, Japan", "Alaska, US", "Palu, Indonesia", "Alaska, US"],
     "Date": ["08/2019", "05/2019", "11/2018", "10/2018"]
-})
+}
 
-# Right align the date column by using HTML
-for i in range(len(st.session_state.table['Date'])):
-    st.session_state.table['Date'][i] = f"<div class='right-align'>{st.session_state.table['Date'][i]}</div>"
+# Create a table with right-aligned dates
+st.table(data={
+    "Deployments": deployments_data["Deployments"],
+    "Location": deployments_data["Location"],
+    "Date": [f'<div style="text-align: right;">{date}</div>' for date in deployments_data["Date"]],
+})
 
 # Section 6: Research Experience
 st.markdown("<p class='sub-heading'>RESEARCH EXPERIENCE</p>", unsafe_allow_html=True)
@@ -135,4 +142,5 @@ Service Achievement Citation (Aerospace Exhibition), Wing Commander Citation, RO
 
 # Section 10: Languages and Computer Skills
 st.markdown("<p class='sub-heading'>LANGUAGES & COMPUTER SKILLS</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English
+st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English (Fluent), Spanish (Basic), Chinese (Basic)</p>", unsafe_allow_html=True)
+st.markdown("<p

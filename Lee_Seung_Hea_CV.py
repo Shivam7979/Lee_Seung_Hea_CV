@@ -1,11 +1,11 @@
 import streamlit as st
-from io import BytesIO
+import pandas as pd
 
 # Set page configuration
 st.set_page_config(page_title="Lee, Seung Hea - Digital CV", layout="centered", initial_sidebar_state="collapsed")
 
 # Define theme colors
-background_color = "#f0f2f6"
+background_color = "#f8f9fa"  # Lighter background color
 heading_color = "#2a9d8f"
 subheading_color = "#264653"
 text_color = "#333333"
@@ -32,7 +32,7 @@ st.markdown(f"""
         .content {{
             color: {text_color};
             font-size: 18px;
-            text-align: center;
+            text-align: left;  /* Changed to left for content */
         }}
         .highlight {{
             color: {highlight_color};
@@ -42,6 +42,13 @@ st.markdown(f"""
             height: 1px;
             background-color: {highlight_color};
             margin: 20px 0;
+        }}
+        table {{
+            border: 1px solid black;  /* Black border for table */
+        }}
+        th, td {{
+            border: 1px solid black;  /* Black border for table cells */
+            padding: 8px;
         }}
     </style>
 """, unsafe_allow_html=True)
@@ -109,12 +116,11 @@ deployments_data = {
     "Date": ["08/2019", "05/2019", "11/2018", "10/2018"]
 }
 
-# Create a table with right-aligned dates
-st.table(data={
-    "Deployments": deployments_data["Deployments"],
-    "Location": deployments_data["Location"],
-    "Date": [f'<div style="text-align: right;">{date}</div>' for date in deployments_data["Date"]],
-})
+# Create a DataFrame for the table
+deployments_df = pd.DataFrame(deployments_data)
+
+# Create a table with right-aligned dates and no first column
+st.table(deployments_df.style.hide_index())  # Hides the index (serial number) column
 
 # Section 6: Research Experience
 st.markdown("<p class='sub-heading'>RESEARCH EXPERIENCE</p>", unsafe_allow_html=True)
@@ -142,4 +148,4 @@ Service Achievement Citation (Aerospace Exhibition), Wing Commander Citation, RO
 
 # Section 10: Languages and Computer Skills
 st.markdown("<p class='sub-heading'>LANGUAGES & COMPUTER SKILLS</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English (Fluent), Spanish (Basic), Chinese (Basic)</p>", unsafe_allow_html=True)
+st.markdown("<p class='content'>Korean (Native), English (Fluent),

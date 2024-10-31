@@ -1,137 +1,122 @@
 import streamlit as st
-import pandas as pd
+import pdfkit
 
-# Set page configuration
-st.set_page_config(page_title="Shivam - Digital CV", layout="centered", initial_sidebar_state="collapsed")
+# Title and Header
+st.title("Lee, Seung Hea")
+st.write("Major(s), Republic of Korea Air Force")
+st.write("22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea")
+st.write("Phone: +82-10-9258-5409 | Email: seunghea.lee.rokaf@gmail.com")
+st.markdown("---")
 
-# Define theme colors
-background_color = "#f8f9fa"  # Lighter background color
-heading_color = "#2a9d8f"
-subheading_color = "#264653"
-text_color = "#333333"
-highlight_color = "#e9c46a"
+# Research Interests
+st.header("RESEARCH INTERESTS")
+st.write("""
+- Ergonomics/Process Design/System Modeling  
+- AI for Aviation  
+- Sensitivity Analysis  
+- Military Operations Research  
+""")
+st.markdown("---")
 
-# Set custom CSS for styling
-st.markdown(f"""
-    <style>
-        body {{
-            background-color: {background_color};
-        }}
-        .main-heading {{
-            font-size: 32px;
-            font-weight: bold;
-            color: {heading_color};
-            text-align: center;
-        }}
-        .sub-heading {{
-            font-size: 24px;
-            font-weight: bold;
-            color: {subheading_color};
-            text-align: center;
-        }}
-        .content {{
-            color: {text_color};
-            font-size: 18px;
-            text-align: left;
-        }}
-        .highlight {{
-            color: {highlight_color};
-        }}
-        hr {{
-            border: 0;
-            height: 1px;
-            background-color: {highlight_color};
-            margin: 20px 0;
-        }}
-        table {{
-            border: 1px solid black;
-        }}
-        th, td {{
-            border: 1px solid black;
-            padding: 8px;
-        }}
-    </style>
-""", unsafe_allow_html=True)
+# Education Section
+st.header("EDUCATION")
+st.write("**University of Sussex**, Brighton, United Kingdom")
+st.write("Master of Science in Sustainable Development")
+st.write("03/2022 - 03/2024", align="right")
 
-# Personal Information
-st.markdown("<p class='main-heading'>Shivam</p>", unsafe_allow_html=True)
-st.markdown("<p class='sub-heading'>MBA Student, University of East London</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'>Address: London, UK<br>Phone: +44-1234-567890<br>Email: shivam.email@example.com</p>", unsafe_allow_html=True)
+st.write("**Korea Air Force Academy**, Cheongju, Korea")
+st.write("*An educational institution for cadets, equivalent to the United States Air Force Academy (USAFA)*")
+st.write("Bachelor of Science in Military / Military Arts")
+st.write("02/2011 - 02/2015", align="right")
+st.markdown("---")
 
-# Divider
-st.markdown("<hr>", unsafe_allow_html=True)
+# Scholarship Section
+st.header("SCHOLARSHIP")
+st.write("**FULL SCHOLARSHIP for Ph.D., Republic of Korea Air Force**")
+st.write("GRANTED(09/2025 - )", align="right")
+st.markdown("---")
 
-# Section 1: Research Interests
-st.markdown("<p class='sub-heading'>RESEARCH INTERESTS</p>", unsafe_allow_html=True)
-st.markdown("""
-<ul class='content'>
-    <li>Digital Marketing Strategies</li>
-    <li>AI in Hospitality</li>
-    <li>Customer Experience Optimization</li>
-</ul>
-""", unsafe_allow_html=True)
+# Military Experience Section
+st.header("MILITARY EXPERIENCE")
+st.write("**Air Force Headquarters**, Gyeryong, Korea")
+st.write("Protocol Officer, Secretary Office to the Chief of Staff (CSAF)")
+st.write("""
+- Facilitated communication and collaboration between senior Air Force leadership and external agencies to strengthen partnerships and achieve organizational goals.
+""")
+st.write("12/2022 - Present", align="right")
 
-# Section 2: Education
-st.markdown("<p class='sub-heading'>EDUCATION</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'><b>University of East London</b>, London, UK<br>MBA (2024-2025)</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'><b>Kishinchand Chellaram College</b>, Mumbai, India<br>Bachelor of Management Studies in Marketing (2023)</p>", unsafe_allow_html=True)
+st.write("**UN Mission in South Sudan (UNMISS), South Sudan**")
+st.write("Military Observer, UNMISS")
+st.write("""
+- Gathered intelligence through patrols and site visits, facilitating communication between conflicting parties, supporting humanitarian efforts.
+""")
+st.write("10/2020 - 10/2021", align="right")
 
-# Section 3: Work Experience
-st.markdown("<p class='sub-heading'>WORK EXPERIENCE</p>", unsafe_allow_html=True)
-st.markdown("""
-<p class='content'><b>Purplle.com</b>, Mumbai, India<br>
-Key Account Executive Intern (Oct 2023 - Apr 2024)<br>
-- Managed key accounts, optimized client communication, and resolved issues promptly.</p>
+st.write("**Air Force Special Missions Wing**, Seoul, Korea")
+st.write("Flight Operations Officer, C-130 Aircraft Flight Crew, Special Operations Flight Squadron")
+st.write("""
+- Oversaw the daily and weekly scheduling and execution of flight operations for an entire flight wing.
+- Managed and approved civilian flights in the vicinity of Air Base, conducting risk assessments and ensuring safety compliance.
+""")
+st.write("04/2016 - 09/2020, 01/2022 - 12/2022", align="right")
 
-<p class='content'><b>SASSFI</b>, Mumbai, India<br>
-Marketing Assistant Intern (Aug 2023 - Sep 2023)<br>
-- Assisted in executing marketing campaigns, conducted market research, and supported strategic development.</p>
-""", unsafe_allow_html=True)
+# Table for Major Deployments
+st.subheader("Major Deployments")
+deployments = [
+    ["Current Flight Operations Officer, U.S.-ROK Command Post Exercise", "Okinawa, Japan", "08/2019"],
+    ["Airlift Package Lead, RF-Alaska (International Joint Exercise)", "Alaska, US", "05/2019"],
+    ["Cooperation Officer/Flight Crew, Humanitarian Disaster Relief Mission", "Palu, Indonesia", "11/2018"]
+]
+st.write("| Role | Location | Date |")
+st.write("|------|----------|------|")
+for role, location, date in deployments:
+    st.write(f"| {role} | {location} | {date} |")
 
-# Section 4: Major Projects
-st.markdown("<p class='sub-heading'>MAJOR PROJECTS</p>", unsafe_allow_html=True)
-st.markdown("""
-<p class='content'><b>lululemon Omnichannel Marketing Simulation</b><br>
-Developed a digital and omnichannel marketing strategy and an integrated plan for MIRROR.</p>
+st.markdown("---")
 
-<p class='content'><b>University of East London: Megatrends Impact on Amazon</b><br>
-A group seminar activity analyzing the impact of megatrends (2020-2030) on Amazon’s strategy.</p>
-""", unsafe_allow_html=True)
+# Research Experience
+st.header("RESEARCH EXPERIENCE")
+st.write("**Korea Air Force Academy**, Cheongju, Korea")
+st.write("Undergraduate student (Professors: Dr. Changboo Kang, Dr. Jung-sik Um)")
+st.write("Graduation Thesis: “The Role of Propaganda in World War I”")
+st.write("09/2014 - 02/2015", align="right")
+st.markdown("---")
 
-# Section 5: Skills
-st.markdown("<p class='sub-heading'>SKILLS</p>", unsafe_allow_html=True)
-st.markdown("""
-<ul class='content'>
-    <li><b>Technical Skills:</b> Google Apps, Microsoft 365, SEO Optimization, Canva, Streamlit, Python (in progress)</li>
-    <li><b>Soft Skills:</b> Communication, Leadership, Multitasking, Strategic Thinking</li>
-</ul>
-""", unsafe_allow_html=True)
+# Publications
+st.header("PUBLICATION")
+st.write("Lee, Y.S., Lee, S.H., Lee, D.S. (2024). A Study on the Satellite Radio Analysis System for Jamming the Satellites of Neighboring Countries Threatening the Korean Peninsula. Military Forum, 118(0), 103-132.")
+st.write("06/2024", align="right")
+st.markdown("---")
 
-# Section 6: Major Deployments (Table Example)
-st.markdown("<p class='sub-heading'>DEPLOYMENTS</p>", unsafe_allow_html=True)
-deployments_data = {
-    "Deployments": [
-        "Project Lead, Digital Marketing for Client X",
-        "Collaborator, AI Integration for Hospitality Software",
-        "Analyst, Customer Data Optimization Project"
-    ],
-    "Date": ["08/2023", "05/2023", "02/2023"]
-}
+# Accomplishments and Certifications
+st.header("ACCOMPLISHMENTS")
+st.write("**QUALIFICATION CERTIFICATES**")
+certificates = [
+    ["Squadron Officer Course, Air University", "09/2024"],
+    ["Female Military Officers Course, UN Women", "07/2021"]
+]
+for cert, date in certificates:
+    st.write(f"- {cert} ({date})")
+st.markdown("---")
 
-deployments_df = pd.DataFrame(deployments_data)
-st.table(deployments_df.style.hide_index())
+# Languages & Skills
+st.header("LANGUAGES & COMPUTER SKILLS")
+st.write("**Languages**: Korean (Native), English (Fluent), Spanish (Basic), Chinese (Basic)")
+st.write("**Computer Skills**: Programming Language: Python, R, HTML")
+st.markdown("---")
 
-# Section 7: Accomplishments
-st.markdown("<p class='sub-heading'>ACCOMPLISHMENTS</p>", unsafe_allow_html=True)
-st.markdown("""
-<p class='content'><b>Completed</b> SEO Certification, HubSpot Academy (2023)<br>
-<b>Head of Administration</b>, KC College Cultural Committee (2022-2023)</p>
-""", unsafe_allow_html=True)
-
-# Section 8: Languages and Computer Skills
-st.markdown("<p class='sub-heading'>LANGUAGES & COMPUTER SKILLS</p>", unsafe_allow_html=True)
-st.markdown("<p class='content'>English (Fluent), Hindi (Native), Basic Python, Streamlit, Advanced Google Apps</p>", unsafe_allow_html=True)
-
-# Footer
-st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("<p class='content' style='text-align:center;'>For further inquiries, contact me at shivam.email@example.com</p>", unsafe_allow_html=True)
+# PDF Download
+if st.button("Download CV as PDF"):
+    # Use pdfkit to generate PDF
+    pdf_content = f"""
+    Title: Lee, Seung Hea
+    Content: {st}
+    """
+    pdfkit.from_string(pdf_content, "Lee_Seung_Hea_CV.pdf")
+    with open("Lee_Seung_Hea_CV.pdf", "rb") as pdf_file:
+        st.download_button(
+            label="Download PDF",
+            data=pdf_file,
+            file_name="Lee_Seung_Hea_CV.pdf",
+            mime="application/pdf"
+        )

@@ -109,7 +109,7 @@ st.write("""
 
 
 # Research Experience Section
-st.header("Research Experience")
+st.header(f"<h2 style='text-decoration: underline;'>Research Experience</h2>", unsafe_allow_html=True)
 st.subheader("Korea Air Force Academy, Cheongju, Korea")
 st.write("09/2014 - 02/2015")
 st.write("Undergraduate student (Professors: Dr. Changboo Kang, Dr. Jung-sik Um)")

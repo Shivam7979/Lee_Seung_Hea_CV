@@ -143,4 +143,3 @@ Service Achievement Citation (Aerospace Exhibition), Wing Commander Citation, RO
 # Section 10: Languages and Computer Skills
 st.markdown("<p class='sub-heading'>LANGUAGES & COMPUTER SKILLS</p>", unsafe_allow_html=True)
 st.markdown("<p class='content'><b>Languages</b><br>Korean (Native), English (Fluent), Spanish (Basic), Chinese (Basic)</p>", unsafe_allow_html=True)
-st.markdown("<p

@@ -1,22 +1,27 @@
 import streamlit as st
 
-# Display CV content (replace with your actual content)
-st.title("Lee, Seung Hea")
-st.subheader("Major(s), Republic of Korea Air Force")
+# Set up the page with a centered layout
+st.set_page_config(page_title="Lee, Seung Hea CV", page_icon=":wave:", layout="centered")
 
-st.text("Address: 22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea")
-st.text("Phone: +82-10-9258-5409          Email: seunghea.lee.rokaf@gmail.com")
 
-# Add a divider
-st.markdown("---")
+    # PDF Download Button directly below the profile image
+    with open("Shivam Soni CV.pdf", "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+    
+    st.download_button(
+        label="📄 Download CV",
+        data=PDFbyte,
+        file_name="Lee_Seung_Hea_CV.pdf",
+        mime="application/pdf"
+    )
 
-# Add download button
-with open('Lee_Seung_Hea_CV.pdf', 'rb') as file:
-    pdf_bytes = file.read()
+# Contact Information
+with col2:
+    st.title("Lee, Seung Hea")
+    st.subtitle(“Major(s), Republic of Korea Air Force")
+    st.write(“**Phone no.:** +82-10-9258-5409 ")
+    st.write("**Email:** [seunghea.lee.rokaf@gmail.com)")
+    st.write("**Address:** 22-80, Jangseungbaegi-ro 174beon-gil, Papyeong-myeon, Paju-si, Gyeonggi-do, Republic of Korea")
 
-st.download_button(
-    label="Download CV",
-    data=pdf_bytes,
-    file_name="Lee_Seung_Hea_CV.pdf",
-    mime='application/octet-stream'
-)
+# Divider
+st.write("---")

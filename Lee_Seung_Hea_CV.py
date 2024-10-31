@@ -40,6 +40,22 @@ st.write("**Air Force Special Missions Wing, Seoul, Korea**")
 st.write("Flight Operations Officer, C-130 Aircraft Flight Crew | 04/2016-09/2020, 01/2022-12/2022")
 st.write("- Oversaw scheduling, led mission planning for tactical operations.")
 
+ # Major Deployments Table
+    pdf.add_page()  # Optional: if you'd like Major Deployments to be on a new page
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Major Deployments", 0, 1, "C")
+    
+    # Table data for deployments
+    data = [
+        ["Role", "Location", "Date"],
+        ["Current Flight Operations Officer, U.S.-ROK Command Post Exercise", "Okinawa, Japan", "08/2019"],
+        ["Airlift Package Lead, RF-Alaska (International Joint Exercise)", "Alaska, US", "05/2019"],
+        ["Cooperation Officer/Flight Crew, Humanitarian Disaster Relief Mission", "Palu, Indonesia", "11/2018"],
+        ["Mission Planning Officer/Flight Crew, RF-Alaska (International Joint Exercise)", "Alaska, US", "10/2018"],
+    ]
+    
+    # Column widths
+    col_widths = [70, 60, 40]
 # Research Experience
 st.header("Research Experience")
 st.write("**Korea Air Force Academy, Cheongju, Korea**")
